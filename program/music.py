@@ -41,7 +41,7 @@ async def ytdl(format: str, link: str):
     return 0, stderr
 
 
-@Client.on_message(command(["شغل", f"play@{BOT_USERNAME}"]) & other_filters)
+@Client.on_message(command(["play", f"play@{BOT_USERNAME}"]) & other_filters)
 async def play(c: Client, m: Message):
     await m.delete()
     replied = m.reply_to_message
@@ -271,3 +271,46 @@ async def play(c: Client, m: Message):
                         except Exception as ep:
                             await suhu.delete()
                             await m.reply_text(f"🚫 error: `{ep}`")
+                            
+                            @Client.on_message(
+    command(["تشغيل", f"start@{BOT_USERNAME}"]) & filters.private & ~filters.edited
+)
+async def start_(client: Client, message: Message):
+    await message.reply_text(
+        f"""✨ **مرحبا {message.from_user.mention()} !**\n
+💭 [{BOT_NAME}](https://t.me/{BOT_USERNAME}) ** يتيح لك تشغيل الموسيقى والفيديو في مجموعات من خلال محادثات الفيديو الجديدة في Telegram!!**
+
+💡 **لمعرفة جميع اوامر البوت اضغط علي » 📚 زرار الاوامر!**
+
+🔖** لمعرفه طريقه استخدام اضغط علي كلمه  » ❓ زرار الدليل الاساسي!
+""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "➕ اضفني الي مجموعتك ➕",
+                        url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
+                    )
+                ],
+                [InlineKeyboardButton("❓ الدليل الاساسي", callback_data="cbhowtouse")],
+                [
+                    InlineKeyboardButton("📚 الاوامر", callback_data="cbcmds"),
+                    InlineKeyboardButton("❤️ المالك", url=f"https://t.me/{OWNER_NAME}"),
+                ],
+                [
+                    InlineKeyboardButton(
+                        "👥 جروب الدعم", url=f"https://t.me/{GROUP_SUPPORT}"
+                    ),
+                    InlineKeyboardButton(
+                        "📣 القناة", url=f"https://t.me/{UPDATES_CHANNEL}"
+                    ),
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🌐 مبرمج السورس [V e R s O n ,]", url="https://t.me/Q_X_I_T"
+                    )
+                ],
+            ]
+        ),
+        disable_web_page_preview=True,
+    )
