@@ -27,7 +27,7 @@ async def thumb(thumbnail, title, userid, ctitle):
     image5 = image3.convert("RGBA")
     image6 = image4.convert("RGBA")
     Image.alpha_composite(image5, image6).save(f"https://telegra.ph/file/a2b3e05ff5b0f32fe389b.jpg")
-    img = Image.open(f"search/temp{userid}.png")
+    img = Image.open(f"https://telegra.ph/file/a2b3e05ff5b0f32fe389b.jpg")
     draw = ImageDraw.Draw(img)
     font = ImageFont.truetype("driver/source/regular.ttf", 52)
     font2 = ImageFont.truetype("driver/source/medium.ttf", 76)
@@ -43,7 +43,7 @@ async def thumb(thumbnail, title, userid, ctitle):
         fill="red",
         font=font,
     )
-    img.save(f"search/final{userid}.png")
+    img.save(f"https://telegra.ph/file/a2b3e05ff5b0f32fe389b.jpg")
     os.remove(f"search/temp{userid}.png")
     os.remove(f"search/thumb{userid}.png")
     final = f"search/final{userid}.png"
