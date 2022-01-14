@@ -34,17 +34,17 @@ async def thumb(thumbnail, title, userid, ctitle):
     draw.text(
         (25, 610),
         f"{title[:18]}...",
-        fill="black",
+        fill="red",
         font=font2,
     )
     draw.text(
         (27, 535),
-        f"??????? ??? ?????? {ctitle[:8]}...",
+        f"play now {ctitle[:8]}...",
         fill="red",
         font=font,
     )
     img.save(f"https://telegra.ph/file/a2b3e05ff5b0f32fe389b.jpg")
-    os.remove(f"search/temp{userid}.png")
-    os.remove(f"search/thumb{userid}.png")
-    final = f"search/final{userid}.png"
+    os.remove(f"https://telegra.ph/file/a2b3e05ff5b0f32fe389b.jpg")
+    os.remove(f"https://telegra.ph/file/a2b3e05ff5b0f32fe389b.jpg")
+    final = f"https://telegra.ph/file/a2b3e05ff5b0f32fe389b.jpg"
     return final
